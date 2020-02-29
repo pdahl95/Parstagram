@@ -16,20 +16,25 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var posts = [PFObject]()
     
     @IBOutlet weak var tableView: UITableView!
-    
+    let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        myRefreshControl.addTarget(self, action: #selector(updateTableView), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.updateTableView()
+    }
+    
+    @objc func updateTableView(){
         let query = PFQuery(className: "Posts")
         query.includeKey("author")
         query.limit = 20
@@ -41,6 +46,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             
         }
+        self.tableView.reloadData()
+        self.myRefreshControl.endRefreshing()
+        
         
     }
     
@@ -63,9 +71,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         
-        print(url)
+//        print(url)
         
         cell.photoView.af_setImage(withURL: url)
+        
 
         return cell
     }
