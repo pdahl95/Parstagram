@@ -11,8 +11,8 @@ import Parse
 import AlamofireImage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+
+   
     var posts = [PFObject]()
     
     @IBOutlet weak var tableView: UITableView!
@@ -56,6 +56,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let post = posts[section]
+        let comments = post["comments"] as? [PFObject]
+        
+        return 1
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
     
@@ -63,6 +72,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         
         let post = posts[indexPath.row]
+        
         let user = post["author"] as! PFUser
         cell.usernameLabel.text = user.username
         cell.captionLabel.text = post["caption"] as? String
@@ -78,6 +88,43 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        
+        let comment = PFObject(className: "Comments")
+        comment["text"] = "This is a random comment"
+        comment["post"] = post
+        comment["user"] = PFUser.current()!
+        
+        post.add(comment, forKey: "comments")
+        
+        post.saveInBackground { (sucess, error) in
+            if sucess {
+                print("Comment saved")
+            }else {
+                print("Error saving comment!!")
+            }
+        }
+    }
+    
+    
+    
+    @IBAction func onLogoutButton(_ sender: Any) {
+        PFUser.logOut()
+        
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
+        
+        let delegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+        
+        delegate.window!.rootViewController = loginViewController
+    }
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation
