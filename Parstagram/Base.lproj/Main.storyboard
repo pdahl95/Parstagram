@@ -161,7 +161,7 @@
                                             <outlet property="usernameLabel" destination="qEL-Rm-SaU" id="cZ2-XQ-urp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="JD7-MQ-cy4" customClass="CommentCell" customModule="Parstagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" id="JD7-MQ-cy4" customClass="CommentCell" customModule="Parstagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="425" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JD7-MQ-cy4" id="DxX-EE-Ssq">
@@ -169,13 +169,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="pdahl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiW-3T-NIp">
-                                                    <rect key="frame" x="16" y="8" width="46" height="25"/>
+                                                    <rect key="frame" x="16" y="8" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is a comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09G-tU-xUb">
-                                                    <rect key="frame" x="97" y="12" width="140" height="21"/>
+                                                    <rect key="frame" x="77" y="12" width="329" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -185,6 +185,7 @@
                                                 <constraint firstItem="aiW-3T-NIp" firstAttribute="top" secondItem="DxX-EE-Ssq" secondAttribute="top" constant="8" id="DeX-95-HGI"/>
                                                 <constraint firstItem="09G-tU-xUb" firstAttribute="top" secondItem="DxX-EE-Ssq" secondAttribute="top" constant="8" id="QVT-QD-66D"/>
                                                 <constraint firstItem="aiW-3T-NIp" firstAttribute="leading" secondItem="DxX-EE-Ssq" secondAttribute="leading" constant="16" id="ezk-U5-pbA"/>
+                                                <constraint firstItem="09G-tU-xUb" firstAttribute="leading" secondItem="aiW-3T-NIp" secondAttribute="trailing" constant="8" id="gjN-T6-ShC"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aiW-3T-NIp" secondAttribute="bottom" constant="8" id="ny3-fg-hLv"/>
                                                 <constraint firstAttribute="trailing" secondItem="09G-tU-xUb" secondAttribute="trailing" constant="8" id="ukJ-JK-dHB"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="09G-tU-xUb" secondAttribute="bottom" constant="8" id="xOz-bT-lNi"/>
